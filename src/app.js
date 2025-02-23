@@ -12,6 +12,10 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(cors({}));
 
+server.get("/", (req, res) => {
+  res.status(200).json({ message: "Server is running!" });
+})
+
 Routes.forEach((item)=>{
   server.use(item.path,item.router)
 })
